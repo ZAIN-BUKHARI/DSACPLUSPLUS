@@ -13,6 +13,7 @@ int main() {
         {
             arr[j+1]=arr[j]; // set 2 = 30 now j set to current 
             j--;   // set j back to index 0
+            
         }
         arr[j+1]=current; // set 2 2 
     }

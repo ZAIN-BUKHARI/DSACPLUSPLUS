@@ -10,11 +10,11 @@ int main() {
     {
         for(int i=0;i<n-count;i++)
         {
-            if(arr[i]>arr[i+1])
+            if(arr[i]>arr[i+1]) //30 > 2 yes
             {
-                int temp = arr[i];
-                arr[i] = arr[i+1];
-                arr[i+1]=temp;
+                int temp = arr[i]; //temp = 30
+                arr[i] = arr[i+1]; // 30 = 2
+                arr[i+1]=temp;    // 2 = temp which is euqal to 30
             }
         }
         count++;

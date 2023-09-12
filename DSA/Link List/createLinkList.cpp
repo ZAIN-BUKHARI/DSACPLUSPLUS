@@ -120,6 +120,44 @@ Node* reverseRecursive(Node* &head)
     head->next=NULL;
     return newhead;
 }
+bool detectionCycle(Node* &head)
+{
+    Node* slow=head;
+    Node* fast=head;
+
+    while(fast!=NULL && fast->next!=NULL)
+    {
+        
+        slow=head->next;
+        fast=head->next->next;
+
+        if(slow==fast)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+void removeCycle(Node* &head)
+{
+    Node* fast=head;
+    Node* slow=head;
+
+    do
+    {
+        slow=slow->next;
+        fast=fast->next->next;
+    } while (slow!=fast);
+
+    fast=head;
+    while(slow->next!=fast->next)
+    {
+        slow=slow->next;
+        fast=fast->next;
+    }
+    slow->next=NULL;
+    
+}
 int main()
 {
     Node* head=NULL;
