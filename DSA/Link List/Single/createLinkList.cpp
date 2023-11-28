@@ -78,7 +78,7 @@ void delElement(Node* &head,int data)
     {
         node=node->next;
     }
-    Node* todel = node->next;
+    Node* todel = node->next; // 1 2 3
     node->next=node->next->next;
 
     delete todel;
@@ -90,6 +90,7 @@ void deleteAtHead(Node* &head)
 
     delete toelete;
 }
+
 Node* reverse(Node* &head)  //iterative reverse 
 {
     Node* previous=NULL;
@@ -160,19 +161,12 @@ void removeCycle(Node* &head)
 }
 int main()
 {
-    Node* head=NULL;
+    Node* head=NULL; reverse(head);
     insertAtTail(head,1);
     insertAtTail(head,2);
     insertAtTail(head,3);
-    insertAtTail(head,4);
-    // insertAtHead(head,4);
-    // displayNode(head);
-    // cout<<endl<<endl;
-    // cout<<searchInList(head,3);
-    // delElement(head,2);
-    // deleteAtHead(head);
-    // displayNode(head);
-    Node* newhead = reverse(head);
-    displayNode(newhead);
+    displayNode(head);
+    displayNode(reverse(head));
+    displayNode(head);
 
 }
