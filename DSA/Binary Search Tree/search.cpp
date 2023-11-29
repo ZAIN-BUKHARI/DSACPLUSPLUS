@@ -12,38 +12,39 @@ struct Node{
     }
 };
 
-Node* searchInBST(Node* root,int key)
+Node* search(Node* root,int key)
 {
     if(root==NULL)
-    {
-        return NULL;//0(n)
-    }
+        return NULL; // KEY NOT FOUND 
 
     if(root->data==key)
-    {
-        return root;//0(n)
-    }
+        return root;// KEY FOUND
 
     if(root->data>key)
-    {
-        return searchInBST(root->left,key);//0(logn)
-    }
-        return searchInBST(root->right,key);//0(logn)
+        return search(root->left,key);
+    return search(root->right,key);
+    
 }
 int main()
 {
+    //          4
+    //         / \ 
+    //        2   5
+    //       /\   \ 
+    //      1 3    6
     struct Node* node = new Node(4);
     node->left = new Node(2);
-    node->right = new Node(4);
+    node->right = new Node(5);
     node->left->left = new Node(1);
     node->left->right = new Node(3);
     node->right->left = new Node(6);
 
-    if(searchInBST(node,3)==NULL)
+    node = search(node,10);
+    if(node==NULL)
     {
         cout << "Key doesn't exist";
     }else{
-        cout<< "Key exists";
+        cout<< "Key exists "<<node->data;
     }
     return 0;
 }

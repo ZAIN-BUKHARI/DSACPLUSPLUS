@@ -23,37 +23,45 @@ Node* inorderSuccess(Node* root)
     return curr;
 }
 
-Node* deleteInBST(Node* root,int key)
+Node* inorderSucc(Node* root)
 {
-    if(key<root->data)
+    Node* curr = root;
+    while(curr && curr!=NULL)
     {
-        root->left = deleteInBST(root->left,key);
+        curr = curr->right;
     }
-    else if(key>root->data)
-    {
-        root->right = deleteInBST(root->right,key);
-    }else{
-        //now key== root->data
-        if(root->left==NULL) //case 1 
+    return curr;
+}
+
+Node* delBST(Node* root,int key)
+{
+    if(root->data>key)
+        return delBST(root->left,key);
+    else if(root->data<key)
+        return delBST(root->right,key);
+    else{
+        if(root->left==NULL)
         {
-            Node* temp = root->right;
-            // free(root);
-            delete root;
-            return temp;
+            Node* right = root->right;
+            free(root);
+            return right;
         }
-        else if(root->right==NULL) //case 2
+        else if(root->right==NULL)
         {
-            Node* temp = root->left;
-            // free(root);
-            delete root;
-            return temp;
+            Node* left = root->left;
+            free(root);
+            return left;
+
         }
-            Node* temp = inorderSuccess(root->right);
-            root->data = temp->data;
-            root->right = deleteInBST(root->right,temp->data);
-        
+        else
+        {
+            Node* temp = inorderSucc(root->right);
+            root->data=temp->data;
+            root->right = delBST(root->right,temp->data);
+        }
     }
     return root;
+    
 }
 void inorder(Node *root)
 {
@@ -67,15 +75,18 @@ void inorder(Node *root)
 }
 int main()
 {
+     //          4
+    //         / \ 
+    //        2   5
+    //       /    
+    //      1     
     struct Node* node = new Node(4);
     node->left = new Node(2);
     node->right = new Node(5);
     node->left->left = new Node(1);
-    node->left->right = new Node(3);
-    node->right->right = new Node(6);
 
     inorder(node);cout<<endl;
-    node = deleteInBST(node,4);
+    node = delBST(node,1);
     inorder(node);
 
     
