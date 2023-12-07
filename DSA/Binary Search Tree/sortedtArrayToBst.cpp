@@ -37,12 +37,12 @@ void preorder(Node* root)
 
 }
 int main()
-{
-     //          4
-    //         / \ 
-    //        2   5
-    //       /    
-    //      1  
+{     // Binary Search method  
+     //        |  
+    //       1 2 3 fromt this Array 
+    //         2
+    //       / \   to this  BST
+    //      1  3
     int arr[]={1,2,3,4,5};
     Node* root=NULL;
     root = sortedArrayToBST(arr,0,4);
