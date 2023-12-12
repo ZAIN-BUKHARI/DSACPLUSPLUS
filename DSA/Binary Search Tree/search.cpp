@@ -22,7 +22,9 @@ Node* search(Node* root,int key)
 
     if(root->data>key)
         return search(root->left,key);
-    return search(root->right,key);
+    else
+        return search(root->right,key);
+    
     
 }
 int main()

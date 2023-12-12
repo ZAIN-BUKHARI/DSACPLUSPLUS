@@ -38,8 +38,8 @@ bool isBST(Node* root,Node* min,Node*max)
 int main()
 {
     Node* node = new Node(2);
-    node->left=new Node(1);
-    node->right=new Node(3);
+    node->left= new Node(1);
+    node->right= new Node(3);
 
     if(isBST(node,NULL,NULL)==false)
     {

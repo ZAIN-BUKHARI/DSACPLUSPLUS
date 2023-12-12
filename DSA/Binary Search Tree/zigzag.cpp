@@ -26,10 +26,6 @@ Node* zigzag(Node* root)
 
     bool leftToRight= true;
 
-    if(root==NULL)
-    {
-        return root;
-    }
     currLevel.push(root);
     while(!currLevel.empty())
     {

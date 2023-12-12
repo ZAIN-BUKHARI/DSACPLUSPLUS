@@ -53,7 +53,7 @@ string infixtopostfix(string s)
         {
             while (!st.empty() && prec(st.top())>prec(s[i]))
             {
-                cout<< st.top()<<endl;
+                // cout<< st.top()<<endl;
                 res+=st.top();
                 st.pop();
             }

@@ -23,37 +23,33 @@ Node* inorderSuccess(Node* root)
     return curr;
 }
 
-Node* inorderSucc(Node* root)
-{
+Node* inorderSucc(Node* root){
     Node* curr = root;
     while(curr && curr!=NULL)
     {
         curr = curr->right;
     }
-    return curr;
-}
+    return curr;}
 
-Node* delBST(Node* root,int key)
-{
+Node* delBST(Node* root,int key){
     if(root->data>key)
         return delBST(root->left,key);
     else if(root->data<key)
         return delBST(root->right,key);
     else{
-        if(root->left==NULL)
+        if(root->left==NULL) //case 1
         {
             Node* right = root->right;
             free(root);
             return right;
         }
-        else if(root->right==NULL)
+        else if(root->right==NULL) // case 2
         {
             Node* left = root->left;
             free(root);
             return left;
-
         }
-        else
+        else //case 3
         {
             Node* temp = inorderSucc(root->right);
             root->data=temp->data;
@@ -61,8 +57,9 @@ Node* delBST(Node* root,int key)
         }
     }
     return root;
-    
-}
+    }
+
+
 void inorder(Node *root)
 {
     if(root==NULL)

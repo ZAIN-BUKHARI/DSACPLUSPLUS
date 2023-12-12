@@ -14,10 +14,9 @@ class Stack
         }
     void push(int x){
         if(top==n-1){
-            cout<<""<<endl;
+        cout<<"Stack is overloaded"<<endl;
             return;
         }
-
         top++;
         arr[top]=x;
     }
