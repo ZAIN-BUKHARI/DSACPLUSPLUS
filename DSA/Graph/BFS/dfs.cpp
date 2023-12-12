@@ -12,16 +12,16 @@ public:
         l[x].push_back(y);
         l[y].push_back(x);
     }
-    void dfs_Helper(T src,map<T,bool> &visisted)
-    {
-        cout<< src << endl;
-        visisted[src]=true;
-        for(T nbr:l[src])
-        {
-            if(!visisted[nbr])
-                dfs_Helper(nbr,visisted);
-        }
-    }
+    // void/ dfs_Helper(T src,map<T,bool> &visisted)
+    // {
+        // cout<< src << endl;
+        // visisted[src]=true;
+        // for(T nbr:l[src])
+        // {
+        //     if(!visisted[nbr])
+        //         dfs_Helper(nbr,visisted);
+        // }
+    // }
     void bfs(T src)
     {
         map<T,bool> visisted;
@@ -31,7 +31,14 @@ public:
             T node = p.first;
             visisted[node]=false;
         }
-        dfs_Helper(src,visisted);
+
+        cout<< src << endl;
+        visisted[src]=true;
+        for(T nbr:l[src])
+        {
+            if(!visisted[nbr])
+                bfs(nbr,visisted);
+        }
     }
 };
     
